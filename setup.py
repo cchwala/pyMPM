@@ -8,14 +8,14 @@ def read(*paths):
         return f.read()
 
 setup(
-    name='pyMPM93',
-    version='0.1.1',
+    name='pyMPM',
+    version='0.0.1',
     description='Python version of the MPM millimeter wave propagation model',
-    url='http://github.com/cchwala/pyMPM93',
+    url='http://github.com/cchwala/pyMPM',
     license='BSD',
     author='Christian Chwala',
     author_email='christian.chwala@kit.edu',
-    py_modules=['MPM93'],
+    packages=['pyMPM'],
     include_package_data=True,
     install_requires=['Numpy'],
     classifiers=[
