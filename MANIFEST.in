@@ -1,0 +1,2 @@
+recursive-include pyMPM93 *.txt
+recursive-include notebooks *
