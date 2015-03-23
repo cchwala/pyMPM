@@ -9,6 +9,52 @@ import numpy as np
 from pkg_resources import resource_filename
 
 def MPM(f, P, T, U, wa, wae, R, output_type='ref'):
+    """
+    Calculate complex refractivity of the atmosphere
+    
+    Use the MPM (millimeter wave propagation model) to calculate the 
+    refractivity of the atmosphere at a given frequency. The output 
+    can be automatically transformed from refractivity to more usabel
+    quantities.
+    
+    Note that `wa`, `wae` and `R` are not yet supported. They can be provided,
+    but do not affect the calculation.
+    
+    Parameters
+    ----------
+    
+    f : int, float, or list or array of these
+        Frequency in GHz
+    P : float
+        Air pressure in mbar
+    T : float
+        Air temperature in degree Celcius
+    U : float
+        Relative humidity in %
+    wa : float
+        Density of water droplets in g/m^3
+    wae : float
+        Concentration of ice particles in g/m^3
+    R : float
+        Rain rate
+    output_tpye : str, optional
+        Desired conversion of complex refractivity for output. Default is
+        `ref` which returns the complex refractiviy
+        Supported types are:
+        'ref' = Refractivity
+        'att' = Attenuation in db/km
+        'dis' = Phase dispersion in deg/km
+        'del' = Group delay in ps/km
+        'abs' = Absorption coefficients in 1/m
+        
+    Returns
+    -------
+    
+    float, np.array
+        The desired conversion of the compelx refractiviy
+    
+    """
+    
     param = inputconv(P, T, U)
     
     NV = watervapormodule(f, param.e, param.pd, param.th)
@@ -30,7 +76,8 @@ def inputconv(P, T, U):
         Air pressure in mbar
     T : float
         Air temperature in degree Celcius
-    U : Relative humidity in %
+    U : float
+        Relative humidity in %
     
     Returns
     -------
@@ -72,7 +119,7 @@ def outconv(f, N, output_type):
     N : complex, np.array of complex
         Refractivity
     output_type: str
-        Desired output tpye. Supporte types are:
+        Desired output tpye. Supported types are:
         'ref' = Refractivity
         'att' = Attenuation in db/km
         'dis' = Phase dispersion in deg/km
