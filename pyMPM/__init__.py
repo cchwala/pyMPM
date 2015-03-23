@@ -1,1 +1,1 @@
-import MPM
+from MPM import *

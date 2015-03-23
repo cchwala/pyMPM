@@ -6,9 +6,9 @@ Created on Fri Mar 20 13:20:49 2015
 """
 
 import numpy as np
+from pkg_resources import resource_filename
 
-
-def MPM93(f, P, T, U, wa, wae, R, output_type='ref'):
+def MPM(f, P, T, U, wa, wae, R, output_type='ref'):
     param = inputconv(P, T, U)
     
     NV = watervapormodule(f, param.e, param.pd, param.th)
@@ -126,7 +126,8 @@ def dryairmodule(f_vec, e, pd, th):
         f_vec = np.array([f_vec,])
     
     ND = []
-    oxygen_lines = np.loadtxt('oxygen93.txt')
+    oxygen_lines = np.loadtxt(resource_filename('pyMPM',
+                                                'oxygen93.txt'))
     
     for f in f_vec:
         # Non dispersive part
@@ -174,7 +175,8 @@ def watervapormodule(f_vec, e, pd, th):
         f_vec = np.array([f_vec,])
     
     NV = []
-    water_lines = np.loadtxt('water93.txt')
+    water_lines = np.loadtxt(resource_filename('pyMPM',
+                                               'water93.txt'))
     # Loop over frequencies
     for f in f_vec:
         nv = (4.163*th + 0.239)*e*th
