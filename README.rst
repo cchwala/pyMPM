@@ -19,3 +19,5 @@ Usage
 -----
 
 Here is an example provided as `IPython notebook <http://nbviewer.ipython.org/github/cchwala/pyMPM/blob/master/notebooks/Example.ipynb>`_.
+
+A further example notebook `dealing with the relation of attenuation and absolute humidity at the frequencies commonly used in commercial microwave links <http://nbviewer.ipython.org/github/cchwala/pyMPM/blob/master/notebooks/Water%20vapor%20attenuation%20at%20MW%20link%20frequencies.ipynb>`_.
