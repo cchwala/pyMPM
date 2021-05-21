@@ -1,3 +1,6 @@
+.. image:: https://zenodo.org/badge/32748849.svg
+   :target: https://zenodo.org/badge/latestdoi/32748849
+
 =========================================================================
 pyMPM - python implementation of the milimeter wave propagation model MPM
 =========================================================================
