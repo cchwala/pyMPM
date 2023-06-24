@@ -14,7 +14,7 @@ This implementation is based on the MATLAB version of MPM93 developed at the `un
 Installation
 ------------
 
-pyMPM uses Python 2 (tested with 2.7) and depends on `numpy`. It can be installed via `pip`::
+pyMPM uses Python 3 (tested with 3.8, 3.9, 3.10 and 3.11) and depends on `numpy`. It can be installed via `pip`::
 
     $ pip install pyMPM
 

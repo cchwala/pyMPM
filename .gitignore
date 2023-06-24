@@ -1,2 +1,5 @@
 *.pyc
 .ipynb_checkpoints
+venv
+pyMPM.egg-info/
+.coverage
