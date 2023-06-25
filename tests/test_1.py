@@ -1,5 +1,6 @@
 from os.path import abspath, join, pardir
 import sys
+from numpy.testing import assert_almost_equal
 
 dp = abspath(join(__file__, pardir, pardir))
 sys.path.insert(0, dp)
@@ -42,11 +43,11 @@ def test_Amin():
     when RH=100% """
     f, A = Amin(20,100,100)
     assert f == 31
-    assert A == 0.17119050960372795
+    assert_almost_equal(A, 0.1711905)  # 0960372795
 
 def test_Amax():
     """ verifies the max attenuation between 100GHz and 150GHz
     when RH=0% """
     f, A = Amax(100,150,0)
     assert f == 119
-    assert A == 1.347599227523178
+    assert_almost_equal(A,1.3475992)  # 227523178

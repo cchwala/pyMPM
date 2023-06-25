@@ -9,7 +9,7 @@ def read(*paths):
 
 setup(
     name='pyMPM',
-    version='0.1.1',
+    version='0.2.0',
     description='Python version of the MPM millimeter wave propagation model',
     url='http://github.com/cchwala/pyMPM',
     license='BSD',
