@@ -6,7 +6,19 @@ Created on Fri Mar 20 13:20:49 2015
 """
 
 import numpy as np
-from pkg_resources import resource_filename
+import sys
+
+# Use modern importlib.resources for Python 3.9+, fallback for 3.8
+if sys.version_info >= (3, 9):
+    from importlib.resources import files
+    def _get_data_file(filename):
+        """Get path to a data file in the package."""
+        return str(files('pyMPM').joinpath(filename))
+else:
+    from pkg_resources import resource_filename
+    def _get_data_file(filename):
+        """Get path to a data file in the package."""
+        return resource_filename('pyMPM', filename)
 
 def MPM(f, P, T, U, wa, wae, R, output_type='ref'):
     """
@@ -173,8 +185,7 @@ def dryairmodule(f_vec, e, pd, th):
         f_vec = np.array([f_vec,])
     
     ND = []
-    oxygen_lines = np.loadtxt(resource_filename('pyMPM',
-                                                'oxygen93.txt'))
+    oxygen_lines = np.loadtxt(_get_data_file('oxygen93.txt'))
     
     for f in f_vec:
         # Non dispersive part
@@ -222,8 +233,7 @@ def watervapormodule(f_vec, e, pd, th):
         f_vec = np.array([f_vec,])
     
     NV = []
-    water_lines = np.loadtxt(resource_filename('pyMPM',
-                                               'water93.txt'))
+    water_lines = np.loadtxt(_get_data_file('water93.txt'))
     # Loop over frequencies
     for f in f_vec:
         nv = (4.163*th + 0.239)*e*th
