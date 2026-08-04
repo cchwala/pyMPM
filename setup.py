@@ -8,9 +8,11 @@ def read(*paths):
         return f.read()
 
 setup(
-    name='pyMPM',
+    name='pympm',
     version='0.2.0',
     description='Python version of the MPM millimeter wave propagation model',
+    long_description=read('README.rst'),
+    long_description_content_type='text/x-rst',
     url='http://github.com/cchwala/pyMPM',
     license='BSD',
     author='Christian Chwala',
